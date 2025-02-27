@@ -1,6 +1,6 @@
-FROM python:3.9-slim
+FROM python:3.9-buster
 
-# Install system dependencies and Chromium/ChromeDriver
+# Install system dependencies, Chromium, and ChromeDriver
 RUN apt-get update && apt-get install -y \
     chromium \
     chromium-driver \
@@ -12,9 +12,11 @@ RUN apt-get update && apt-get install -y \
     libgbm1 \
     ca-certificates \
     fonts-liberation \
+    wget \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# Set environment variables so Selenium knows where Chromium is located
+# Set environment variables so Selenium knows where Chromium is
 ENV CHROME_BIN=/usr/bin/chromium
 ENV CHROMEDRIVER_BIN=/usr/bin/chromedriver
 

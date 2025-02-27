@@ -9,9 +9,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# Read Telegram Bot Credentials from environment variables
-TELEGRAM_BOT_TOKEN = "7935730367:AAGhHmu84OT8PMlSuW10-WH_BOTsz0BbKwk"
-TELEGRAM_CHAT_ID = "2144001639"
+import os
+TELEGRAM_BOT_TOKEN = os.environ.get("7935730367:AAGhHmu84OT8PMlSuW10-WH_BOTsz0BbKwk")
+TELEGRAM_CHAT_ID = os.environ.get("2144001639")
+# ... rest of your code ...
+
 
 # Kleinanzeigen URL
 KLEINANZEIGEN_URL = "https://www.kleinanzeigen.de/s-fahrraeder/47053/c217l2148r35"

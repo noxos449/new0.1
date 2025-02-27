@@ -1,19 +1,23 @@
-# Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
 # Install system dependencies and Chromium/ChromeDriver
 RUN apt-get update && apt-get install -y \
     chromium \
     chromium-driver \
-    wget \
-    unzip \
+    libnss3 \
+    libgconf-2-4 \
+    libxi6 \
+    libxcursor1 \
+    libxrandr2 \
+    libgbm1 \
+    ca-certificates \
+    fonts-liberation \
     && rm -rf /var/lib/apt/lists/*
 
-# Set environment variables for Chromium
+# Set environment variables so Selenium knows where Chromium is located
 ENV CHROME_BIN=/usr/bin/chromium
 ENV CHROMEDRIVER_BIN=/usr/bin/chromedriver
 
-# Create and set the working directory
 WORKDIR /app
 
 # Copy dependency file and install Python packages
@@ -24,4 +28,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Run the bot
-CMD ["python", "bot.py"]
+CMD ["python", "mybot.py"]
